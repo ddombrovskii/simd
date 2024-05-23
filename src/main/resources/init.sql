@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS pilot
+(
+    id   BIGSERIAL PRIMARY KEY,
+    name VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS flight
+(
+    id BIGSERIAL PRIMARY KEY,
+    home VARCHAR(20),
+    plan TEXT,
+    pilot_id BIGINT REFERENCES pilot
+);
+
+CREATE TABLE IF NOT EXISTS log
+(
+    id BIGSERIAL PRIMARY KEY,
+    filepath VARCHAR(300) NOT NULL,
+    flight_id BIGINT REFERENCES flight
+);
